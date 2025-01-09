@@ -1,5 +1,7 @@
 package model.entities;
 
+import exceptions.DomainException;
+
 public class Account {
 
     private Integer number;
@@ -55,11 +57,11 @@ public class Account {
 
     public void withdrawLimit(Double amount){
         if (amount > withdrawLimit) {
-            throw new IllegalArgumentException("The amount exceeds the withdraw limit."); 
+            throw new DomainException("The amount exceeds the withdraw limit."); 
         }
 
         if (amount > balance) {
-            throw new IllegalArgumentException("Not enough balance.");
+            throw new DomainException("Not enough balance.");
         }
         balance -= amount;
     }
